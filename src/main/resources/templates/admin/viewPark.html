@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<body class="container" th:object="park">
+
+<h1 th:text="${title}"></h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div>
+
+    <h3></h3>
+
+    <span th:text="${park.name}"></span><br />
+    <span th:text="${park.neighborhood}"></span><br />
+    <span th:text="${park.streetAddress}"></span><br />
+    <span th:text="${park.city}" ></span><br />
+    <span th:text="${park.zip}"></span><br />
+
+
+    </p>
+
+</div>
+
+</body>
+</html>
