@@ -14,17 +14,18 @@ public class Park {
     @GeneratedValue
     private int id;
 
-    @NotNull
-    @Size(min=3, max=100)
+
     private String name;
 
 
-    @Size(min=3, max=200)
+    private String neighborhood;
+
+
     private String streetAddress;
 
     private String city;
 
-    @Size(min=5, max=10)
+
     private int zip;
 
     private boolean bikeTrail;
@@ -53,6 +54,12 @@ public class Park {
     private boolean boathouse;
     private boolean skatingRink;
     private boolean veloDrome;
+    private boolean sharedTrail;
+    private boolean memorial;
+    private boolean theater;
+    private boolean museum;
+    private boolean historicStructure;
+
 
     //constructors
 
@@ -62,7 +69,7 @@ public class Park {
         this.id = id;
         this.name = name;
         this.streetAddress = streetAddress;
-        this.city = city;
+        this.city = this.city;
         this.zip = zip;
         this.bikeTrail = false;
         this.walkingTrail = false;
@@ -90,6 +97,11 @@ public class Park {
         this.boathouse = false;
         this.skatingRink = false;
         this.veloDrome = false;
+        this.sharedTrail = false;
+        this.memorial = false;
+        this.museum = false;
+        this.theater = false;
+        this.historicStructure = false;
     }
 
     //getters and setters
@@ -339,7 +351,51 @@ public class Park {
         this.veloDrome = veloDrome;
     }
 
-    public static void main(String[] args) {
-        System.out.println("hello");
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public boolean isSharedTrail() {
+        return sharedTrail;
+    }
+
+    public void setSharedTrail(boolean sharedTrail) {
+        this.sharedTrail = sharedTrail;
+    }
+
+    public boolean isMemorial() {
+        return memorial;
+    }
+
+    public void setMemorial(boolean memorial) {
+        this.memorial = memorial;
+    }
+
+    public boolean isTheater() {
+        return theater;
+    }
+
+    public void setTheater(boolean theater) {
+        this.theater = theater;
+    }
+
+    public boolean isMuseum() {
+        return museum;
+    }
+
+    public void setMuseum(boolean museum) {
+        this.museum = museum;
+    }
+
+    public boolean isHistoricStructure() {
+        return historicStructure;
+    }
+
+    public void setHistoricStructure(boolean historicStructure) {
+        this.historicStructure = historicStructure;
     }
 }
