@@ -9,7 +9,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" th:object="${park}">
+<form method="post" style="max-width:600px;" th:object="${park}">
 
     <div class="form-group">
         <label th:for="name">Name</label>
@@ -35,6 +35,8 @@
         <label th:for="zip">Zip Code</label>
         <input class="form-control" th:field="*{zip}" />
     </div>
+
+
 
     <input type="submit" value="Add Park" />
 

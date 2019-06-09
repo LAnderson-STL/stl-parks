@@ -3,22 +3,27 @@
 
 <head th:replace="fragments :: head"></head>
 
-<body class="container" th:object="park">
+<body class="container" th:object="${park}">
 
-<h1 th:text="${title}"></h1>
+
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<br />
+
+<h1 th:text="${title}"></h1>
+
+<br />
+
 <div>
 
-    <h3></h3>
+    <p>
 
-    <span th:text="${park.name}"></span><br />
-    <span th:text="${park.neighborhood}"></span><br />
-    <span th:text="${park.streetAddress}"></span><br />
-    <span th:text="${park.city}" ></span><br />
-    <span th:text="${park.zip}"></span><br />
-
+        <strong>Name: </strong><span th:text="${park.name}"> </span><br />
+        <strong>Neighborhood: </strong><span th:text="${park.neighborhood}"></span><br />
+        <strong>Street Address: </strong><span th:text="${park.streetAddress}"></span><br />
+        <strong>City: </strong><span th:text="${park.city}" ></span><br />
+        <strong>Zip: </strong><span th:text="${park.zip}"></span><br />
 
     </p>
 

@@ -21,16 +21,16 @@ public class AdminController {
     @Autowired
     private ParkDao parkDao;
 
-    @RequestMapping(value="", method = RequestMethod.GET)
+    @RequestMapping(value="add", method = RequestMethod.GET)
     public String displayAddForm(Model model){
 
         model.addAttribute("title","Add New Park");
         model.addAttribute(new Park());
 
-        return "admin/index";
+        return "admin/add";
     }
 
-    @RequestMapping(value="", method = RequestMethod.POST)
+    @RequestMapping(value="add", method = RequestMethod.POST)
     public String processAddForm(@ModelAttribute Park newPark, Model model){
 
 
@@ -41,10 +41,11 @@ public class AdminController {
 
     }
 
-    @RequestMapping(value = "view/{parkId}", method = RequestMethod.GET)
-    public String viewMenu(Model model, @PathVariable int parkId) {
+    @RequestMapping(value = "/view/{parkId}", method = RequestMethod.GET)
+    public String viewPark(Model model, @PathVariable int parkId) {
         Park newPark = parkDao.findOne(parkId);
         model.addAttribute("park", newPark);
+        model.addAttribute("title", "Add Successful!");
 
 
         return "admin/viewPark";
