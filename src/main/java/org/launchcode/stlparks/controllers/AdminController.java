@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,15 +28,23 @@ public class AdminController {
 
         model.addAttribute("title","Add New Park");
         model.addAttribute(new Park());
+        model.addAttribute("amenities", amenityDao.findAll());
+
 
         return "admin/addPark";
     }
 
     @RequestMapping(value="addPark", method = RequestMethod.POST)
-    public String processAddPark(@ModelAttribute Park newPark, Model model){
-
+    public String processAddPark(@ModelAttribute Park newPark, @RequestParam int[] amenityIds, Model model){
 
         //TODO error handing
+
+        for(int amenityId : amenityIds){
+            Amenity amenity = amenityDao.findOne(amenityId);
+
+            newPark.addAmenity(amenity);
+        }
+
 
         parkDao.save(newPark);
         return "redirect:view/" + newPark.getId();
@@ -67,12 +72,14 @@ public class AdminController {
     @RequestMapping(value="addAmenity", method = RequestMethod.POST)
     public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
 
-
         //TODO error handing
+
 
         amenityDao.save(newAmenity);
         return "redirect:addAmenity";
     }
+
+
 
 
 
