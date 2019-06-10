@@ -1,7 +1,9 @@
 package org.launchcode.stlparks.controllers;
 
 
+import org.launchcode.stlparks.models.Amenity;
 import org.launchcode.stlparks.models.Park;
+import org.launchcode.stlparks.models.data.AmenityDao;
 import org.launchcode.stlparks.models.data.ParkDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +23,26 @@ public class AdminController {
     @Autowired
     private ParkDao parkDao;
 
-    @RequestMapping(value="add", method = RequestMethod.GET)
-    public String displayAddForm(Model model){
+    @Autowired
+    private AmenityDao amenityDao;
+
+    @RequestMapping(value="addPark", method = RequestMethod.GET)
+    public String displayAddPark(Model model){
 
         model.addAttribute("title","Add New Park");
         model.addAttribute(new Park());
 
-        return "admin/add";
+        return "admin/addPark";
     }
 
-    @RequestMapping(value="add", method = RequestMethod.POST)
-    public String processAddForm(@ModelAttribute Park newPark, Model model){
+    @RequestMapping(value="addPark", method = RequestMethod.POST)
+    public String processAddPark(@ModelAttribute Park newPark, Model model){
 
 
         //TODO error handing
 
         parkDao.save(newPark);
-        return "redirect: view/" + newPark.getId();
+        return "redirect:view/" + newPark.getId();
 
     }
 
@@ -49,6 +54,24 @@ public class AdminController {
 
 
         return "admin/viewPark";
+    }
+
+    @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
+    public String displayAddAmenity(Model model){
+        model.addAttribute("title","Add New Amenity");
+        model.addAttribute(new Amenity());
+
+        return "admin/addAmenity";
+    }
+
+    @RequestMapping(value="addAmenity", method = RequestMethod.POST)
+    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
+
+
+        //TODO error handing
+
+        amenityDao.save(newAmenity);
+        return "redirect:addAmenity";
     }
 
 

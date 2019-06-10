@@ -3,8 +3,10 @@ package org.launchcode.stlparks.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Entity
@@ -14,95 +16,41 @@ public class Park {
     @GeneratedValue
     private int id;
 
-
+    @NotNull
+    @Size(min=3, max=100)
     private String name;
 
-
+    @NotNull
+    @Size(min=3, max=100)
     private String neighborhood;
 
-
+    @NotNull
+    @Size(min=3, max=100)
     private String streetAddress;
 
+    @NotNull
+    @Size(min=3, max=100)
     private String city;
 
 
     private int zip;
 
-    private boolean bikeTrail;
-    private boolean walkingTrail;
-    private boolean playground;
-    private boolean sprayPool;
-    private boolean pavilion;
-    private boolean monument;
-    private boolean lake;
-    private boolean statue;
-    private boolean fountain;
-    private boolean garden;
-    private boolean archery;
-    private boolean rugbyField;
-    private boolean footballField;
-    private boolean basketballCourt;
-    private boolean tennisCourt;
-    private boolean baseballField;
-    private boolean soccerField;
-    private boolean softballField;
-    private boolean handballCourt;
-    private boolean horseshoeCourt;
-    private boolean volleyballCourt;
-    private boolean multiPurposeField;
-    private boolean recreationCenter;
-    private boolean boathouse;
-    private boolean skatingRink;
-    private boolean veloDrome;
-    private boolean sharedTrail;
-    private boolean memorial;
-    private boolean theater;
-    private boolean museum;
-    private boolean historicStructure;
-
+    @ManyToMany
+    private List<Amenity> amenities;
 
     //constructors
 
     public Park(){}
 
-    public Park(int id, String name, String streetAddress, String city, int zip) {
-        this.id = id;
+    public Park(String name, String neighborhood, String streetAddress, String city, int zip) {
         this.name = name;
+        this.neighborhood = neighborhood;
         this.streetAddress = streetAddress;
-        this.city = this.city;
+        this.city = city;
         this.zip = zip;
-        this.bikeTrail = false;
-        this.walkingTrail = false;
-        this.playground = false;
-        this.sprayPool = false;
-        this.pavilion = false;
-        this.monument = false;
-        this.lake = false;
-        this.statue = false;
-        this.fountain = false;
-        this.garden = false;
-        this.archery = false;
-        this.rugbyField = false;
-        this.footballField = false;
-        this.basketballCourt = false;
-        this.tennisCourt = false;
-        this.baseballField = false;
-        this.soccerField = false;
-        this.softballField = false;
-        this.handballCourt = false;
-        this.horseshoeCourt = false;
-        this.volleyballCourt = false;
-        this.multiPurposeField = false;
-        this.recreationCenter = false;
-        this.boathouse = false;
-        this.skatingRink = false;
-        this.veloDrome = false;
-        this.sharedTrail = false;
-        this.memorial = false;
-        this.museum = false;
-        this.theater = false;
-        this.historicStructure = false;
     }
+
+    public void addAmenity(Amenity amenity) {amenities.add(amenity);}
 
     //getters and setters
 
@@ -143,214 +91,6 @@ public class Park {
         this.zip = zip;
     }
 
-    public boolean isBikeTrail() {
-        return bikeTrail;
-    }
-
-    public void setBikeTrail(boolean bikeTrail) {
-        this.bikeTrail = bikeTrail;
-    }
-
-    public boolean isWalkingTrail() {
-        return walkingTrail;
-    }
-
-    public void setWalkingTrail(boolean walkingTrail) {
-        this.walkingTrail = walkingTrail;
-    }
-
-    public boolean isPlayground() {
-        return playground;
-    }
-
-    public void setPlayground(boolean playground) {
-        this.playground = playground;
-    }
-
-    public boolean isSprayPool() {
-        return sprayPool;
-    }
-
-    public void setSprayPool(boolean sprayPool) {
-        this.sprayPool = sprayPool;
-    }
-
-    public boolean isPavilion() {
-        return pavilion;
-    }
-
-    public void setPavilion(boolean pavilion) {
-        this.pavilion = pavilion;
-    }
-
-    public boolean isMonument() {
-        return monument;
-    }
-
-    public void setMonument(boolean monument) {
-        this.monument = monument;
-    }
-
-    public boolean isLake() {
-        return lake;
-    }
-
-    public void setLake(boolean lake) {
-        this.lake = lake;
-    }
-
-    public boolean isStatue() {
-        return statue;
-    }
-
-    public void setStatue(boolean statue) {
-        this.statue = statue;
-    }
-
-    public boolean isFountain() {
-        return fountain;
-    }
-
-    public void setFountain(boolean fountain) {
-        this.fountain = fountain;
-    }
-
-    public boolean isGarden() {
-        return garden;
-    }
-
-    public void setGarden(boolean garden) {
-        this.garden = garden;
-    }
-
-    public boolean isArchery() {
-        return archery;
-    }
-
-    public void setArchery(boolean archery) {
-        this.archery = archery;
-    }
-
-    public boolean isRugbyField() {
-        return rugbyField;
-    }
-
-    public void setRugbyField(boolean rugbyField) {
-        this.rugbyField = rugbyField;
-    }
-
-    public boolean isFootballField() {
-        return footballField;
-    }
-
-    public void setFootballField(boolean footballField) {
-        this.footballField = footballField;
-    }
-
-    public boolean isBasketballCourt() {
-        return basketballCourt;
-    }
-
-    public void setBasketballCourt(boolean basketballCourt) {
-        this.basketballCourt = basketballCourt;
-    }
-
-    public boolean isTennisCourt() {
-        return tennisCourt;
-    }
-
-    public void setTennisCourt(boolean tennisCourt) {
-        this.tennisCourt = tennisCourt;
-    }
-
-    public boolean isBaseballField() {
-        return baseballField;
-    }
-
-    public void setBaseballField(boolean baseballField) {
-        this.baseballField = baseballField;
-    }
-
-    public boolean isSoccerField() {
-        return soccerField;
-    }
-
-    public void setSoccerField(boolean soccerField) {
-        this.soccerField = soccerField;
-    }
-
-    public boolean isSoftballField() {
-        return softballField;
-    }
-
-    public void setSoftballField(boolean softballField) {
-        this.softballField = softballField;
-    }
-
-    public boolean isHandballCourt() {
-        return handballCourt;
-    }
-
-    public void setHandballCourt(boolean handballCourt) {
-        this.handballCourt = handballCourt;
-    }
-
-    public boolean isHorseshoeCourt() {
-        return horseshoeCourt;
-    }
-
-    public void setHorseshoeCourt(boolean horseshoeCourt) {
-        this.horseshoeCourt = horseshoeCourt;
-    }
-
-    public boolean isVolleyballCourt() {
-        return volleyballCourt;
-    }
-
-    public void setVolleyballCourt(boolean volleyballCourt) {
-        this.volleyballCourt = volleyballCourt;
-    }
-
-    public boolean isMultiPurposeField() {
-        return multiPurposeField;
-    }
-
-    public void setMultiPurposeField(boolean multiPurposeField) {
-        this.multiPurposeField = multiPurposeField;
-    }
-
-    public boolean isRecreationCenter() {
-        return recreationCenter;
-    }
-
-    public void setRecreationCenter(boolean recreationCenter) {
-        this.recreationCenter = recreationCenter;
-    }
-
-    public boolean isBoathouse() {
-        return boathouse;
-    }
-
-    public void setBoathouse(boolean boathouse) {
-        this.boathouse = boathouse;
-    }
-
-    public boolean isSkatingRink() {
-        return skatingRink;
-    }
-
-    public void setSkatingRink(boolean skatingRink) {
-        this.skatingRink = skatingRink;
-    }
-
-    public boolean isVeloDrome() {
-        return veloDrome;
-    }
-
-    public void setVeloDrome(boolean veloDrome) {
-        this.veloDrome = veloDrome;
-    }
-
     public String getNeighborhood() {
         return neighborhood;
     }
@@ -359,43 +99,11 @@ public class Park {
         this.neighborhood = neighborhood;
     }
 
-    public boolean isSharedTrail() {
-        return sharedTrail;
+    public List<Amenity> getAmenities() {
+        return amenities;
     }
 
-    public void setSharedTrail(boolean sharedTrail) {
-        this.sharedTrail = sharedTrail;
-    }
-
-    public boolean isMemorial() {
-        return memorial;
-    }
-
-    public void setMemorial(boolean memorial) {
-        this.memorial = memorial;
-    }
-
-    public boolean isTheater() {
-        return theater;
-    }
-
-    public void setTheater(boolean theater) {
-        this.theater = theater;
-    }
-
-    public boolean isMuseum() {
-        return museum;
-    }
-
-    public void setMuseum(boolean museum) {
-        this.museum = museum;
-    }
-
-    public boolean isHistoricStructure() {
-        return historicStructure;
-    }
-
-    public void setHistoricStructure(boolean historicStructure) {
-        this.historicStructure = historicStructure;
+    public void setAmenities(List<Amenity> amenities) {
+        this.amenities = amenities;
     }
 }
