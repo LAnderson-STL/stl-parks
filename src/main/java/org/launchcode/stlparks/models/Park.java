@@ -35,7 +35,7 @@ public class Park {
 
     private int zip;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "parks")
     private List<Amenity> amenities;
 
     //constructors

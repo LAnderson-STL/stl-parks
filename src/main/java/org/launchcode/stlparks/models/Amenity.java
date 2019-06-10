@@ -19,7 +19,7 @@ public class Amenity {
     @GeneratedValue
     private int id;
 
-    @ManyToMany(mappedBy = "amenities")
+    @ManyToMany
     private List<Park> parks;
 
     public Amenity(String name) {
