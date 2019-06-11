@@ -7,13 +7,18 @@
 
 <br />
 
-<form method="POST" style="max-width:600px;" action="/admin/add-amenities" th:object="${form}">
-    <div th:each="amenity : ${amenities}" class="checkbox">
-        <input type="checkbox" name="amenityIds" th:value="${amenity.id}" th:id="${amenity.id}"/>
-        <label th:for="${amenity.id}" th:text="${amenity.name}"></label>
-        <br />
+<form method="POST" style="max-width:600px;" action="/admin/addParkAmenities" th:object="${form}">
+    <div class="form-group">
+        <label th:for="amenityId">Amenity</label>
+        <select th:field="*{amenityId}">
+            <option th:each="amenity : *{amenities}"
+                    th:text="${amenity.name}"
+                    th:value="${amenity.id}"></option>
+        </select>
     </div>
 
+    <input type="hidden" th:value="*{park.id}" name="parkID" />
+    <input type="submit" value="Add Amenity to park"/>
 
 </form>
 

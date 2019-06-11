@@ -3,7 +3,7 @@ package org.launchcode.stlparks.models.forms;
 import org.launchcode.stlparks.models.Amenity;
 import org.launchcode.stlparks.models.Park;
 
-public class AddAmenityForm {
+public class AddParkAmenitiesForm {
 
     private Park park;
 
@@ -13,9 +13,9 @@ public class AddAmenityForm {
 
     private int parkId;
 
-    public AddAmenityForm(){}
+    public AddParkAmenitiesForm(){}
 
-    public AddAmenityForm(Park park, Iterable<Amenity> amenities) {
+    public AddParkAmenitiesForm(Park park, Iterable<Amenity> amenities) {
         this.park = park;
         this.amenities = amenities;
     }

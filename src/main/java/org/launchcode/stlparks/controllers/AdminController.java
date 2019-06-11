@@ -5,14 +5,11 @@ import org.launchcode.stlparks.models.Amenity;
 import org.launchcode.stlparks.models.Park;
 import org.launchcode.stlparks.models.data.AmenityDao;
 import org.launchcode.stlparks.models.data.ParkDao;
-import org.launchcode.stlparks.models.forms.AddAmenityForm;
+import org.launchcode.stlparks.models.forms.AddParkAmenitiesForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("admin")
@@ -62,28 +59,22 @@ public class AdminController {
     public String displayAddParkAmenities(Model model, @PathVariable int parkId){
 
         Park park = parkDao.findOne(parkId);
-        AddAmenityForm form = new AddAmenityForm(park, amenityDao.findAll());
+        AddParkAmenitiesForm form = new AddParkAmenitiesForm(park, amenityDao.findAll());
         model.addAttribute("title","Add Amenities for Park " + park.getName());
-        model.addAttribute("amenities", amenityDao.findAll());
+        //model.addAttribute("amenities", amenityDao.findAll());
+        model.addAttribute("form", form);
 
         return "admin/addParkAmenities";
     }
 
-    @RequestMapping(value = "/addParkAmenities/{parkId}", method = RequestMethod.POST)
-    public String processAddParkAmenities(@ModelAttribute AddAmenityForm form, Park park, Model model, @RequestParam  amenityIds){
 
-
-
-
-
-        return "";
-    }
 
 
     @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
     public String displayAddAmenity(Model model){
         model.addAttribute("title","Add New Amenity");
         model.addAttribute(new Amenity());
+
 
         return "admin/addAmenity";
     }
