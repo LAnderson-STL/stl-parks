@@ -48,39 +48,6 @@ public class AdminController {
 
 
 
-
-    //@RequestMapping(value="/addParkAmenities/{parkId}", method = RequestMethod.GET)
-    //public String displayAddParkAmenities(Model model){
-
-        //Park newPark = new Park();
-        //AddAmenityForm form = new AddAmenityForm(newPark, amenityDao.findAll());
-        //model.addAttribute("title","Add New Park");
-        //model.addAttribute("form", form);
-
-        //model.addAttribute("amenities", amenityDao.findAll());
-
-
-        //return "admin/addPark";
-    //}
-
-    //@RequestMapping(value="/addParkAmenities/{parkId}\"", method = RequestMethod.POST)
-    //public String processAddParkAmenities(@ModelAttribute AddAmenityForm form, Park newPark, @RequestParam int[] amenityIds, Model model){
-
-        //TODO error handing
-
-
-        //for(int amenityId : amenityIds){
-            //Amenity amenity = amenityDao.findOne(amenityId);
-
-            //newPark.addAmenity(amenity);
-        //}
-
-
-       // parkDao.save(newPark);
-        //return "redirect:view/" + newPark.getId();
-
-    //}
-
     @RequestMapping(value = "/view/{parkId}", method = RequestMethod.GET)
     public String viewPark(Model model, @PathVariable int parkId) {
         Park newPark = parkDao.findOne(parkId);
@@ -91,19 +58,43 @@ public class AdminController {
         return "admin/viewPark";
     }
 
+    @RequestMapping(value="/addParkAmenities/{parkId}", method = RequestMethod.GET)
+    public String displayAddParkAmenities(Model model, @PathVariable int parkId){
+
+        Park park = parkDao.findOne(parkId);
+        AddAmenityForm form = new AddAmenityForm(park, amenityDao.findAll());
+        model.addAttribute("title","Add Amenities for Park " + park.getName());
+        model.addAttribute("amenities", amenityDao.findAll());
+
+        return "admin/addParkAmenities";
+    }
+
+    @RequestMapping(value = "/addParkAmenities/{parkId}", method = RequestMethod.POST)
+    public String processAddParkAmenities(@ModelAttribute AddAmenityForm form, Park park, Model model, @RequestParam  amenityIds){
+
+
+
+
+
+        return "";
+    }
+
+
     @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
-    public String displayAddNewAmenity(Model model){
+    public String displayAddAmenity(Model model){
         model.addAttribute("title","Add New Amenity");
         model.addAttribute(new Amenity());
 
         return "admin/addAmenity";
     }
 
+
+
     @RequestMapping(value="addAmenity", method = RequestMethod.POST)
-    public String processAddNewAmenity(@ModelAttribute Amenity newAmenity, Model model) {
+    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
+
 
         //TODO error handing
-
 
         amenityDao.save(newAmenity);
         return "redirect:addAmenity";

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}"></h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<br />
+
+<form method="POST" style="max-width:600px;" action="/admin/add-amenities" th:object="${form}">
+    <div th:each="amenity : ${amenities}" class="checkbox">
+        <input type="checkbox" name="amenityIds" th:value="${amenity.id}" th:id="${amenity.id}"/>
+        <label th:for="${amenity.id}" th:text="${amenity.name}"></label>
+        <br />
+    </div>
+
+
+</form>
+
+</body>
+</html>
