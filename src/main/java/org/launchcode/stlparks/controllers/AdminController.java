@@ -69,6 +69,19 @@ public class AdminController {
         return "admin/addParkAmenities";
     }
 
+    @RequestMapping(value = "addParkAmenities", method = RequestMethod.POST)
+    public String processAddItem(@ModelAttribute AddParkAmenitiesForm form, Model model) {
+
+
+        Park park = parkDao.findOne(form.getParkId());
+        Amenity amenity = amenityDao.findOne(form.getAmenityId());
+        park.addAmenity(amenity);
+        parkDao.save(park);
+
+        return "redirect:view/" + park.getId();
+
+    }
+
 
 
 
