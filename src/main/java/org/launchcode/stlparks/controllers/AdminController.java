@@ -1,6 +1,7 @@
 package org.launchcode.stlparks.controllers;
 
 
+import org.hibernate.boot.jaxb.hbm.spi.JaxbHbmNamedNativeQueryType;
 import org.launchcode.stlparks.models.Amenity;
 import org.launchcode.stlparks.models.Park;
 import org.launchcode.stlparks.models.data.AmenityDao;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 @Controller
 @RequestMapping("admin")
@@ -59,13 +62,12 @@ public class AdminController {
     public String displayAddParkAmenities(Model model, @PathVariable int parkId){
 
         Park park = parkDao.findOne(parkId);
+        AddParkAmenitiesForm form = new AddParkAmenitiesForm(park, amenityDao.findAll());
         model.addAttribute("title","Add Amenities for Park " + park.getName());
-        model.addAttribute("amenities", amenityDao.findAll());
-        model.addAttribute("park", park);
+        model.addAttribute("form", form);
 
         return "admin/addParkAmenities";
     }
-
 
 
 
