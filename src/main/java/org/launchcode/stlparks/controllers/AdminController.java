@@ -48,7 +48,7 @@ public class AdminController {
 
 
 
-    @RequestMapping(value = "/view/{parkId}", method = RequestMethod.GET)
+    @RequestMapping(value = "view/{parkId}", method = RequestMethod.GET)
     public String viewPark(Model model, @PathVariable int parkId) {
         Park newPark = parkDao.findOne(parkId);
         model.addAttribute("park", newPark);
@@ -57,6 +57,26 @@ public class AdminController {
 
         return "admin/viewPark";
     }
+
+    @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
+    public String displayAddAmenity(Model model){
+        model.addAttribute("title","Add New Amenity");
+        model.addAttribute(new Amenity());
+
+        return "admin/addAmenity";
+    }
+
+    @RequestMapping(value="addAmenity", method = RequestMethod.POST)
+    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
+
+
+        //TODO error handing
+
+        amenityDao.save(newAmenity);
+        return "redirect:addAmenity";
+    }
+
+
 
     @RequestMapping(value="/addParkAmenities/{parkId}", method = RequestMethod.GET)
     public String displayAddParkAmenities(Model model, @PathVariable int parkId){
@@ -81,33 +101,6 @@ public class AdminController {
         return "redirect:view/" + park.getId();
 
     }
-
-
-
-
-
-    @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
-    public String displayAddAmenity(Model model){
-        model.addAttribute("title","Add New Amenity");
-        model.addAttribute(new Amenity());
-
-
-        return "admin/addAmenity";
-    }
-
-
-
-    @RequestMapping(value="addAmenity", method = RequestMethod.POST)
-    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
-
-
-        //TODO error handing
-
-        amenityDao.save(newAmenity);
-        return "redirect:addAmenity";
-    }
-
-
 
 
 
