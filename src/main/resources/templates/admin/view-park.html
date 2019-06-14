@@ -8,11 +8,13 @@
 
 
 <nav>
-    <a href="/admin">Home</a> |
-    <a href="/admin/addPark">Add New Park</a> |
-    <a href="/admin/addAmenity">Add New Amenity</a>
-
+    <a href="/admin">Admin Home</a> |
+    <a href="/admin/add-park">Add New Park</a> |
+    <a href="/admin/delete-park">Delete Park</a> |
+    <a href="/admin/add-amenity">Add New Amenity</a> |
+    <a href="/admin/delete-amenity">Delete Amenity</a>
 </nav>
+
 
 
 <br />
@@ -40,7 +42,7 @@
 
 </div>
 
-<p><a th:href="'/admin/addParkAmenities/' + ${park.id}">Add Amenitites for This Park</a></p>
+<p><a th:href="'/admin/add-park-amenities/' + ${park.id}">Add Amenitites for This Park</a></p>
 
 </body>
 </html>

@@ -35,22 +35,22 @@ public class AdminController {
         return "admin/index";
     }
 
-    @RequestMapping(value = "addPark", method = RequestMethod.GET)
+    @RequestMapping(value = "add-park", method = RequestMethod.GET)
     public String displayAddPark(Model model) {
 
         model.addAttribute("title", "Add New Park");
         model.addAttribute(new Park());
 
-        return "admin/addPark";
+        return "admin/add-park";
     }
 
-    @RequestMapping(value = "addPark", method = RequestMethod.POST)
+    @RequestMapping(value = "add-park", method = RequestMethod.POST)
     public String processAddPark(@ModelAttribute Park newPark, Errors errors, Model model) {
 
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add New Park");
-            return "admin/addPark";
+            return "admin/add-park";
         }
 
         //TODO: error handling
@@ -68,32 +68,32 @@ public class AdminController {
         model.addAttribute("title", "Add Successful!");
 
 
-        return "admin/viewPark";
+        return "admin/view-park";
     }
 
-    @RequestMapping(value = "addAmenity", method = RequestMethod.GET)
+    @RequestMapping(value = "add-amenity", method = RequestMethod.GET)
     public String displayAddAmenity(Model model) {
         model.addAttribute("title", "Add New Amenity");
         model.addAttribute(new Amenity());
 
-        return "admin/addAmenity";
+        return "admin/add-amenity";
     }
 
-    @RequestMapping(value = "addAmenity", method = RequestMethod.POST)
+    @RequestMapping(value = "add-amenity", method = RequestMethod.POST)
     public String processAddAmenity(@ModelAttribute Amenity newAmenity, Errors errors, Model model) {
 
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Amenity");
-            return "admin/addAmenity";
+            return "admin/add-amenity";
         }
 
         amenityDao.save(newAmenity);
-        return "redirect:addAmenity";
+        return "redirect:add-amenity";
     }
 
 
-    @RequestMapping(value = "/addParkAmenities/{parkId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/add-park-amenities/{parkId}", method = RequestMethod.GET)
     public String displayAddParkAmenities(Model model, @PathVariable int parkId) {
 
         Park park = parkDao.findOne(parkId);
@@ -101,10 +101,10 @@ public class AdminController {
         model.addAttribute("title", "Add Amenities for Park " + park.getName());
         model.addAttribute("form", form);
 
-        return "admin/addParkAmenities";
+        return "admin/add-park-amenities";
     }
 
-    @RequestMapping(value = "addParkAmenities", method = RequestMethod.POST)
+    @RequestMapping(value = "add-park-amenities", method = RequestMethod.POST)
     public String processAddItem(@ModelAttribute AddParkAmenitiesForm form, Model model) {
 
 
@@ -117,15 +117,15 @@ public class AdminController {
 
     }
 
-    @RequestMapping(value = "deletePark", method = RequestMethod.GET)
+    @RequestMapping(value = "delete-park", method = RequestMethod.GET)
     public String viewDeletePark(Model model) {
         model.addAttribute("parks", parkDao.findAll());
         model.addAttribute("title", "Delete Park");
 
-        return "admin/deletePark";
+        return "admin/delete-park";
     }
 
-    @RequestMapping(value = "deletePark", method = RequestMethod.POST)
+    @RequestMapping(value = "delete-park", method = RequestMethod.POST)
     public String processDeletePark(@RequestParam int[] parkIds) {
 
         for (int parkId : parkIds) {
@@ -135,20 +135,20 @@ public class AdminController {
             parkDao.delete(park);
         }
 
-        return "redirect:/admin/deletePark";
+        return "redirect:/admin/delete-park";
     }
 
 
-    @RequestMapping(value = "deleteAmenity", method = RequestMethod.GET)
+    @RequestMapping(value = "delete-amenity", method = RequestMethod.GET)
     public String viewDeleteAmenity(Model model) {
         model.addAttribute("amenities", amenityDao.findAll());
         model.addAttribute("title", "Delete Amenities");
 
 
-        return "admin/deleteAmenity";
+        return "admin/delete-amenity";
     }
 
-    @RequestMapping(value = "deleteAmenity", method = RequestMethod.POST)
+    @RequestMapping(value = "delete-amenity", method = RequestMethod.POST)
     public String processDeleteAmenity(@RequestParam int[] amenityIds) {
 
         for (int amenityId : amenityIds) {
@@ -158,7 +158,7 @@ public class AdminController {
             amenityDao.delete(amenity);
         }
 
-        return "redirect:/admin/deleteAmenity";
+        return "redirect:/admin/delete-amenity";
 
 
     }

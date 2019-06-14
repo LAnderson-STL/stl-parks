@@ -4,20 +4,18 @@
 
 <head th:replace="fragments :: head"></head>
 
-<body>
+<body class="container">
 
 <h1 th:text="${title}"></h1>
 
 <nav>
-    <nav>
-        <a href="/admin">Home</a> |
-        <a href="/admin/addPark">Add New Park</a> |
-
-
-    </nav>
-
-
+    <a href="/admin">Admin Home</a> |
+    <a href="/admin/add-park">Add New Park</a> |
+    <a href="/admin/delete-park">Delete Park</a> |
+    <a href="/admin/add-amenity">Add New Amenity</a> |
+    <a href="/admin/delete-amenity">Delete Amenity</a>
 </nav>
+
 
 
 <form method="post" style="max-width:600px;" th:object="${amenity}">

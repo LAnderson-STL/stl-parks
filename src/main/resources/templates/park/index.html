@@ -5,21 +5,24 @@
 <h1 th:text="${title}"></h1>
 
 <nav>
-    <a href="/admin/addPark">fix</a> |
-    <a href="/admin/addAmenity">fix</a>
-
+    <a href="/admin">Admin Home</a> |
+    <a href="/admin/add-park">Add New Park</a> |
+    <a href="/admin/delete-park">Delete Park</a> |
+    <a href="/admin/add-amenity">Add New Amenity</a> |
+    <a href="/admin/delete-amenity">Delete Amenity</a>
 </nav>
 
 
 <br />
-<h2>Search By Amenities</h2>
+<h2>Welcome to Home!</h2>
 
+<h4>Parks List</h4>
 
-<div th:each="amenity : ${amenities}" class="checkbox">
-    <input type="checkbox" name="amenityIds" th:value="${amenity.id}" th:id="${amenity.id}"/>
-    <label th:for="${id}" th:text="${amenity.name}"></label>
-    <br />
-</div>
+<ul>
+    <li th:each="park : ${parks}">
+        <a th:href="'admin/view/'+ ${park.id}" th:text="${park.name}"></a>
+    </li>
+</ul>
 
 
 </body>
