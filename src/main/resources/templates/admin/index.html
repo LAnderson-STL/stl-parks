@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}"></h1>
+
+<nav>
+    <a href="/admin/addPark">Add New Park</a> |
+    <a href="/admin/addAmenity">Add New Amenity</a>
+
+</nav>
+
+
+<br />
+<h2>Welcome to Admin Home!</h2>
+
+<h4>Parks List</h4>
+
+<ul>
+    <li th:each="park : ${parks}">
+        <a th:href="'admin/view/'+ ${park.id}" th:text="${park.name}"></a>
+    </li>
+</ul>
+
+
+</body>
+</html>

@@ -8,7 +8,17 @@
 
 <h1 th:text="${title}"></h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<nav>
+    <nav>
+        <a href="/admin">Home</a> |
+        <a href="/admin/addPark">Add New Park</a> |
+
+
+    </nav>
+
+
+</nav>
+
 
 <form method="post" style="max-width:600px;" th:object="${amenity}">
 

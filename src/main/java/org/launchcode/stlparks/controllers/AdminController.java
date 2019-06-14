@@ -26,6 +26,15 @@ public class AdminController {
     private AmenityDao amenityDao;
 
 
+    @RequestMapping(value="", method = RequestMethod.GET)
+    public String index(Model model){
+
+        model.addAttribute("title", "Admin Home");
+        model.addAttribute("parks", parkDao.findAll());
+
+        return "admin/index";
+    }
+
     @RequestMapping(value="addPark", method = RequestMethod.GET)
     public String displayAddPark(Model model){
 
@@ -43,6 +52,8 @@ public class AdminController {
             model.addAttribute("title", "Add New Park");
             return "admin/addPark";
         }
+
+        //TODO: error handling
 
         parkDao.save(newPark);
         return "redirect:view/" + newPark.getId();
