@@ -10,6 +10,7 @@ import org.launchcode.stlparks.models.forms.AddParkAmenitiesForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -35,10 +36,13 @@ public class AdminController {
     }
 
     @RequestMapping(value="addPark", method = RequestMethod.POST)
-    public String processAddPark(@ModelAttribute Park newPark, Model model){
+    public String processAddPark(@ModelAttribute Park newPark, Errors errors, Model model){
 
 
-        //TODO error handing
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add New Park");
+            return "admin/addPark";
+        }
 
         parkDao.save(newPark);
         return "redirect:view/" + newPark.getId();
@@ -55,6 +59,7 @@ public class AdminController {
         model.addAttribute("title", "Add Successful!");
 
 
+
         return "admin/viewPark";
     }
 
@@ -67,10 +72,13 @@ public class AdminController {
     }
 
     @RequestMapping(value="addAmenity", method = RequestMethod.POST)
-    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Model model) {
+    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Errors errors, Model model) {
 
 
-        //TODO error handing
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Amenity");
+            return "admin/addAmenity";
+        }
 
         amenityDao.save(newAmenity);
         return "redirect:addAmenity";

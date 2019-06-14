@@ -27,6 +27,11 @@
 
     </p>
 
+    <p><strong>Amenities</strong></p>
+    <ul th:each="amenity : ${park.amenities}">
+        <li th:text = "${amenity.name}"></li>
+    </ul>
+
 </div>
 
 <p><a th:href="'/admin/addParkAmenities/' + ${park.id}">Add Amenitites for This Park</a></p>

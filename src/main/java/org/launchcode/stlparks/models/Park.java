@@ -20,19 +20,14 @@ public class Park {
     @Size(min=3, max=100)
     private String name;
 
-    @NotNull
-    @Size(min=3, max=100)
     private String neighborhood;
 
-    @NotNull
-    @Size(min=3, max=100)
     private String streetAddress;
 
-    @NotNull
-    @Size(min=3, max=100)
     private String city;
 
 
+    //TODO: set size constraints for zip
     private int zip;
 
     @ManyToMany
