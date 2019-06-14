@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}"></h1>
 
+<nav>
+    <a href="/admin/addPark">fix</a> |
+    <a href="/admin/addAmenity">fix</a>
+
+</nav>
+
+
+<br />
+<h2>Search By Amenities</h2>
+
+
+<div th:each="amenity : ${amenities}" class="checkbox">
+    <input type="checkbox" name="amenityIds" th:value="${amenity.id}" th:id="${amenity.id}"/>
+    <label th:for="${id}" th:text="${amenity.name}"></label>
+    <br />
+</div>
 
 
 </body>
