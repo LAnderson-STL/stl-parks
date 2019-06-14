@@ -47,6 +47,8 @@ public class Park {
 
     public void addAmenity(Amenity amenity) {amenities.add(amenity);}
 
+    public void deleteAmenity(Amenity amenity) { amenities.remove(amenity); }
+
     //getters and setters
 
 

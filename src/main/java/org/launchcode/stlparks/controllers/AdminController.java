@@ -121,8 +121,29 @@ public class AdminController {
 
     }
 
+    @RequestMapping(value = "deletePark", method = RequestMethod.GET)
+    public String viewDeletePark(Model model){
+        model.addAttribute("parks", parkDao.findAll());
+        model.addAttribute("title", "Delete Park");
 
+        return "admin/deletePark";
+    }
 
+    @RequestMapping(value="deletePark", method = RequestMethod.POST)
+    public String processDeletePark(@RequestParam int[] parkIds){
+
+        for (int parkId : parkIds){
+            Park park = parkDao.findOne(parkId);
+
+            for (Amenity amenity : park.getAmenities()){
+                park.deleteAmenity(amenity);
+            }
+
+            parkDao.delete(parkId);
+        }
+
+        return "redirect:admin/index";
+    }
 
 
 
