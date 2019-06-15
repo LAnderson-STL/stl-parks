@@ -30,6 +30,11 @@
             <td th:text="${park.streetAddress} + ', St. Louis, MO  ' + ${park.zip}"></td>
         </tr>
         <tr>
+            <th>Website</th>
+            <td th:text="${park.website}"></td>
+        </tr>
+        <tr>
+        <tr>
             <th>Amenities</th>
             <td>
             <ul th:each="amenity : ${park.amenities}">

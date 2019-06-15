@@ -26,6 +26,8 @@ public class Park {
 
     private String city;
 
+    private String website;
+
 
     //TODO: set size constraints for zip
     private int zip;
@@ -37,12 +39,14 @@ public class Park {
 
     public Park(){}
 
-    public Park(String name, String neighborhood, String streetAddress, String city, int zip) {
+    public Park(String name, String neighborhood, String streetAddress, String city, int zip, String website) {
         this.name = name;
         this.neighborhood = neighborhood;
         this.streetAddress = streetAddress;
         this.city = city;
         this.zip = zip;
+        this.website = website;
+
     }
 
     public void addAmenity(Amenity amenity) {amenities.add(amenity);}
@@ -96,6 +100,14 @@ public class Park {
 
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public List<Amenity> getAmenities() {

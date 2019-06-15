@@ -32,6 +32,7 @@
         <strong>Street Address: </strong><span th:text="${park.streetAddress}"></span><br />
         <strong>City: </strong><span th:text="${park.city}" ></span><br />
         <strong>Zip: </strong><span th:text="${park.zip}"></span><br />
+        <strong>Website: </strong><span ><a th:href="${park.website}" th:target="_blank">Visit Website</a></span><br />
 
     </p>
 
@@ -42,7 +43,7 @@
 
 </div>
 
-<p><a th:href="'/admin/add-park-amenities/' + ${park.id}">Add Amenitites for This Park</a></p>
+<p><a th:href="'/admin/add-park-amenities/' + ${park.id}">Add Amenities for This Park</a></p>
 
 </body>
 </html>
