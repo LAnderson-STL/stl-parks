@@ -68,7 +68,7 @@ public class ParkController {
 
         model.addAttribute("parks", foundParks);
 
-        return "park/search-results";
+        return "park/show-parks";
 
 
 
