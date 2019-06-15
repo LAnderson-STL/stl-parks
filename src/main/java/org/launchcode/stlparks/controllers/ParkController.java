@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.*;
+
 @Controller
 @RequestMapping("")
 public class ParkController {
@@ -46,6 +48,31 @@ public class ParkController {
         return "park/search";
     }
 
+    @RequestMapping(value="search", method = RequestMethod.POST)
+    public String processSearch(Model model, @RequestParam ArrayList<Integer> amenityIds){
+
+
+        ArrayList<Park> foundParks = new ArrayList<>();
+
+        for (Park park : parkDao.findAll()){
+            ArrayList<Integer> parkAmenityIds = new ArrayList<>();
+            for (Amenity amenity : park.getAmenities()){
+                parkAmenityIds.add(amenity.getId());
+            }
+
+            if (parkAmenityIds.containsAll(amenityIds)){
+                foundParks.add(park);
+            }
+
+        }
+
+        model.addAttribute("parks", foundParks);
+
+        return "park/search-results";
+
+
+
+    }
 
 
 
