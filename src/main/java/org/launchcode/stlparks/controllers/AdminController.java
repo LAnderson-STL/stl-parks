@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -45,7 +46,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "add-park", method = RequestMethod.POST)
-    public String processAddPark(@ModelAttribute Park newPark, Errors errors, Model model) {
+    public String processAddPark(@ModelAttribute @Valid Park newPark, Errors errors, Model model) {
 
 
         if (errors.hasErrors()) {
@@ -80,7 +81,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "add-amenity", method = RequestMethod.POST)
-    public String processAddAmenity(@ModelAttribute Amenity newAmenity, Errors errors, Model model) {
+    public String processAddAmenity(@ModelAttribute @Valid Amenity newAmenity, Errors errors, Model model) {
 
 
         if (errors.hasErrors()) {

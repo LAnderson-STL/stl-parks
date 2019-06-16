@@ -12,7 +12,7 @@ import java.util.List;
 public class Amenity {
 
     @NotNull
-    @Size(min=1, max=100)
+    @Size(min=1, max=150, message="Field may not be empty")
     private String name;
 
     @Id

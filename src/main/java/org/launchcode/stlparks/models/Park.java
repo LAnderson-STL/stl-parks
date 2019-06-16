@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -17,19 +18,28 @@ public class Park {
     private int id;
 
     @NotNull
-    @Size(min=3, max=100)
+    @Size(min=1, max=150, message="Field may not be empty")
     private String name;
 
+
+    @NotNull
+    @Size(min=1, max=150, message="Field may not be empty")
     private String neighborhood;
 
+    @NotNull
+    @Size(min=1, max=150, message="Field may not be empty")
     private String streetAddress;
 
+    @NotNull
+    @Size(min=1, max=150, message="Field may not be empty")
     private String city;
 
+    @NotNull
+    @Size(min=1, max=500, message="Field may not be empty")
     private String website;
 
-
-    //TODO: set size constraints for zip
+    @NotNull
+    @Min(value = 5, message = "Zip code must contain between 5 and 9 characters")
     private int zip;
 
     @ManyToMany
