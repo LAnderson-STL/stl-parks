@@ -42,6 +42,8 @@ public class ParkController {
     @RequestMapping (value="search", method = RequestMethod.GET)
     public String showSearch(Model model){
 
+
+
         model.addAttribute("title", "Search by Amenity");
         model.addAttribute("amenities", amenityDao.findAll());
 

@@ -3,7 +3,11 @@
 
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
+<body class="container-fluid">
+
+<nav th:replace="fragments :: nav"></nav>
+
+<div class = "container">
 
 <h1 th:text="${title}"></h1>
 
@@ -58,6 +62,7 @@
     <input type="submit" value="Add Park" />
 
 </form>
+</div>
 
 </body>
 </html>

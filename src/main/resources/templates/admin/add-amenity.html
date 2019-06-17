@@ -4,7 +4,11 @@
 
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
+<body class="container-fluid">
+
+<nav th:replace="fragments :: nav"></nav>
+
+<div class = "container">
 
 <h1 th:text="${title}"></h1>
 
@@ -30,5 +34,6 @@
 
 </form>
 
+</div>
 </body>
 </html>

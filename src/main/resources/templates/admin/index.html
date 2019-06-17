@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body class="container-fluid">
+
+<nav th:replace="fragments :: nav"></nav>
+
+<div class = "container">
 <h1 th:text="${title}"></h1>
 
 <nav>
@@ -23,6 +27,6 @@
     </li>
 </ul>
 
-
+</div>
 </body>
 </html>
