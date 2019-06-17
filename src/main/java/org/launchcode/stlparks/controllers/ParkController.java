@@ -34,7 +34,7 @@ public class ParkController {
     @RequestMapping (value="show-parks", method = RequestMethod.GET)
     public String showParks(Model model){
 
-        model.addAttribute("parks", parkDao.findAll());
+        model.addAttribute("parks", parkDao.findAllByOrderByNameAsc());
 
         return "park/show-parks";
     }
@@ -45,7 +45,7 @@ public class ParkController {
 
 
         model.addAttribute("title", "Search by Amenity");
-        model.addAttribute("amenities", amenityDao.findAll());
+        model.addAttribute("amenities", amenityDao.findAllByOrderByNameAsc());
 
         return "park/search";
     }
