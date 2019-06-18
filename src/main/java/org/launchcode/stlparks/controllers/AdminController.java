@@ -120,7 +120,7 @@ public class AdminController {
 
     @RequestMapping(value = "delete-park", method = RequestMethod.GET)
     public String viewDeletePark(Model model) {
-        model.addAttribute("parks", parkDao.findAll());
+        model.addAttribute("parks", parkDao.findAllByOrderByNameAsc());
         model.addAttribute("title", "Delete Park");
 
         return "admin/delete-park";
@@ -142,7 +142,7 @@ public class AdminController {
 
     @RequestMapping(value = "delete-amenity", method = RequestMethod.GET)
     public String viewDeleteAmenity(Model model) {
-        model.addAttribute("amenities", amenityDao.findAll());
+        model.addAttribute("amenities", amenityDao.findAllByOrderByNameAsc());
         model.addAttribute("title", "Delete Amenities");
 
 

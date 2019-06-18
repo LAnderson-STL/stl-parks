@@ -1,9 +1,6 @@
 package org.launchcode.stlparks.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -19,7 +16,7 @@ public class Amenity {
     @GeneratedValue
     private int id;
 
-    @ManyToMany(mappedBy = "amenities")
+    @ManyToMany (mappedBy = "amenities")
     private List<Park> parks;
 
     public Amenity(String name) {
