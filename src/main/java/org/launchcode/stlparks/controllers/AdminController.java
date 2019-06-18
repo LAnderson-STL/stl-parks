@@ -54,7 +54,7 @@ public class AdminController {
             return "admin/add-park";
         }
 
-        //TODO: error handling
+
 
         parkDao.save(newPark);
         return "redirect:view/" + newPark.getId();
