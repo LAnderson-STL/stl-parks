@@ -126,7 +126,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "delete-park", method = RequestMethod.GET)
-    public String viewDeletePark(Model model) {
+    public String displayDeletePark(Model model) {
         model.addAttribute("parks", parkDao.findAllByOrderByNameAsc());
         model.addAttribute("title", "Delete Park");
 
@@ -148,7 +148,7 @@ public class AdminController {
 
 
     @RequestMapping(value = "delete-amenity", method = RequestMethod.GET)
-    public String viewDeleteAmenity(Model model) {
+    public String displayDeleteAmenity(Model model) {
         model.addAttribute("amenities", amenityDao.findAllByOrderByNameAsc());
         model.addAttribute("title", "Delete Amenities");
 
