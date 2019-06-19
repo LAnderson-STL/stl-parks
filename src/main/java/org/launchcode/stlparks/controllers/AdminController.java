@@ -2,8 +2,10 @@ package org.launchcode.stlparks.controllers;
 
 
 import org.hibernate.boot.jaxb.hbm.spi.JaxbHbmNamedNativeQueryType;
+import org.launchcode.stlparks.models.Admin;
 import org.launchcode.stlparks.models.Amenity;
 import org.launchcode.stlparks.models.Park;
+import org.launchcode.stlparks.models.data.AdminDao;
 import org.launchcode.stlparks.models.data.AmenityDao;
 import org.launchcode.stlparks.models.data.ParkDao;
 import org.launchcode.stlparks.models.forms.AddParkAmenitiesForm;
@@ -25,6 +27,11 @@ public class AdminController {
 
     @Autowired
     private AmenityDao amenityDao;
+
+    @Autowired
+    private AdminDao adminDao;
+
+
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)

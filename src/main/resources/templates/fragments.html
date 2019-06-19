@@ -34,7 +34,7 @@
                 <a class="nav-link" href="/show-parks">All STL Parks</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#adminLogin" data-toggle="modal" data-target="#adminLogin">Admin</a>
+                <a class="nav-link" href="" data-toggle="modal" data-target="#adminLogin">Admin</a>
             </li>
 
         </ul>
@@ -62,21 +62,23 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form method="post" action="/admin/admin-login">
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <input type="email" id="defaultForm-email" class="form-control validate" />
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+                        <input type="text"  name="adminUsername" class="form-control" placeholder="Username" />
+
                     </div>
 
                     <div class="md-form mb-4">
-                        <input type="password" id="defaultForm-pass" class="form-control validate" />
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                        <input type="password"  name="adminPassword" class="form-control" placeholder="Password"  />
+
                     </div>
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-success btn-block">Login</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
